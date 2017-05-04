@@ -1,15 +1,15 @@
 [Unit]
-Description=PIVX's distributed currency daemon
+Description=CCoin's distributed currency daemon
 After=network.target
 
 [Service]
-User=pivx
-Group=pivx
+User=clonecoin
+Group=clonecoin
 
 Type=forking
-PIDFile=/var/lib/pivxd/pivxd.pid
-ExecStart=/usr/bin/pivxd -daemon -pid=/var/lib/pivxd/pivxd.pid \
--conf=/etc/pivx/pivx.conf -datadir=/var/lib/pivxd
+PIDFile=/var/lib/clonecoind/clonecoind.pid
+ExecStart=/usr/bin/clonecoind -daemon -pid=/var/lib/clonecoind/clonecoind.pid \
+-conf=/etc/clonecoin/clonecoin.conf -datadir=/var/lib/clonecoind
 
 Restart=always
 PrivateTmp=true

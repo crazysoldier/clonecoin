@@ -1,6 +1,6 @@
 [Protocol]
-exec=pivx-qt '%u'
-protocol=pivx
+exec=clonecoin-qt '%u'
+protocol=clonecoin
 input=none
 output=none
 helper=true
