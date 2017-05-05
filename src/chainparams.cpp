@@ -108,7 +108,7 @@ public:
         nModifierUpdateBlock = 615800;
 
         /**
-         * Build the genesis block. Note that the output of the genesis coinbase cannot
+         * Build the genesis block . Note that the output of the genesis coinbase cannot
          * be spent as it did not originally exist in the database.
          *
          * CBlock(hash=00000ffd590b14, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=e0028e, nTime=1390095618, nBits=1e0ffff0, nNonce=28917698, vtx=1)
@@ -135,9 +135,41 @@ public:
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("0x"));
         assert(genesis.hashMerkleRoot == uint256("0x"));
+//litecoin genesis hashing
+        if (true && genesis.GetHash() != hashGenesisBlock)
+        {
+            printf("Searching for genesis block ...\n");
+            // This will figure out a valid hash and Nonce if you're
+            // creating a different genesis block:
+            uint256 hashTarget = CBigNum().SetCompact(genesis.nBits).getuint256();
+            uint256 thash;
+            char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
 
-        /* --commented by crazysoldier vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "clonecoin.seed.fuzzbawls.pw"));     // Primary DNS Seeder from Fuzzbawls
-        vSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "clonecoin.seed2.fuzzbawls.pw"));    // Secondary DNS Seeder from Fuzzbawls
+            loop
+            {
+                scrypt_1024_1_1_256_sp(BEGIN(genesis.nVersion), BEGIN(thash), scratchpad);
+                if (thash <= hashTarget)
+                    break;
+                if ((genesis.nNonce & 0xFFF) == 0)
+                {
+                    printf("nonce %08X: hash = %s (target = %s)\n", genesis.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+                }
+                ++genesis.nNonce;
+                if (genesis.nNonce == 0)
+                {
+                    printf("NONCE WRAPPED, incrementing time\n");
+                    ++genesis.nTime;
+                }
+            }
+             printf("genesis.nTime = %u \n", genesis.nTime);
+             printf("genesis.nNonce = %u \n", genesis.nNonce);
+             printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
+
+            }
+//litecoin genesis hashing
+
+         vSeeds.push_back(CDNSSeedData("46.101.140.200", "46.101.140.200"));     // Primary DNS Seeder from bithost
+        /* --commented by crazysoldiervSeeds.push_back(CDNSSeedData("fuzzbawls.pw", "clonecoin.seed2.fuzzbawls.pw"));    // Secondary DNS Seeder from Fuzzbawls
         vSeeds.push_back(CDNSSeedData("coin-server.com", "coin-server.com"));         // Single node address
         vSeeds.push_back(CDNSSeedData("s3v3nh4cks.ddns.net", "s3v3nh4cks.ddns.net")); // Single node address
         vSeeds.push_back(CDNSSeedData("178.254.23.111", "178.254.23.111"));           // Single node address */
