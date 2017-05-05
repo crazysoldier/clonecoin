@@ -205,10 +205,10 @@ static const char UNUSED* clonecoin_strings[] = {
     QT_TRANSLATE_NOOP("clonecoin-core", ""
                                    "You must specify a masternodeprivkey in the configuration. Please see "
                                    "documentation for help."),
-    QT_TRANSLATE_NOOP("clonecoin-core", "(51472 could be used only on mainnet)"),
+    QT_TRANSLATE_NOOP("clonecoin-core", "(59966 could be used only on mainnet)"),
     QT_TRANSLATE_NOOP("clonecoin-core", "(default: %s)"),
     QT_TRANSLATE_NOOP("clonecoin-core", "(default: 1)"),
-    QT_TRANSLATE_NOOP("clonecoin-core", "(must be 51472 for mainnet)"),
+    QT_TRANSLATE_NOOP("clonecoin-core", "(must be 59966 for mainnet)"),
     QT_TRANSLATE_NOOP("clonecoin-core", "<category> can be:\n"),
     QT_TRANSLATE_NOOP("clonecoin-core", "Accept command line and JSON-RPC commands"),
     QT_TRANSLATE_NOOP("clonecoin-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
